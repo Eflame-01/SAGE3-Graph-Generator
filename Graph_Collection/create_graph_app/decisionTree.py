@@ -15,6 +15,12 @@ class Node:
         self.leftNode = leftNode
         self.rightNode = rightNode
 
+    def isLeaf(self):
+        if self.leftNode == None and self.rightNode == None and self.feature == None and self.guess != None:
+            return True
+        else:
+            return False
+
 # DecisionTree is the class that will have the hardcoded information
 # to create the decision tree using the Node class. DecisionTree will
 # also have a function that will actually generate the answer to what
@@ -26,22 +32,27 @@ class DecisionTree:
     
     # method that hardcodes the tree
     def createDecisionTree(self):
+        # create the leaves of the tree
         leaf1a = Node(None, "Line Graph || Bar Graph", None, None)
         leaf1b = Node(None, "Bar Graph || Circle Graph", None, None)
         leaf1c = Node(None, "Circle Graph", None, None)
         leaf2a = Node(None, "Line Graph", None, None)
         leaf2b = Node(None, "Double Bar Graph || Line Graph", None, None)
+
+        # create the parent nodes that house the leaves
         node3 = Node(IsThereACorrelationBetweenTwoColumns(), None, leaf2a, leaf2b)
         node2b = Node(HowManyCategoriesInColumn(2), None, leaf1b, leaf1c)
         node2a = Node(HowManyCategoriesInColumn(1), None, leaf1a, node3)
         node1 = Node(DoesDataHaveATimeInterval(), None, node2a, node2b)
-        return None
+
+        # return the root node that holds all the other child nodes
+        return node1
 
     def decisionTreeTest(self, tree, data):
         # tree = the decision tree that was created as a result of the decisionTreeTrain() method
         # testPoint = a method that asks a question testing the likelihood of a dataset belonging to a certain graph
         # create a way to simulate tha for each testPoint, you get closer and closer to the correct answer of what the graph should be
-        if tree.leftNode == None and tree.rightNode == None:
+        if tree.isLeaf():
             # we are at the leaf
             return tree.guess
         else:
