@@ -25,10 +25,9 @@
 </body>
 
 <script>
-    var file
-    const fileSelector = document.getElementById('file_selector')
-    const reader = new FileReader()
-    const textarea = document.querySelector('textarea')
+    file
+    fileSelector = document.getElementById('file_selector')
+    textarea = document.querySelector('textarea')
 
     fileSelector.addEventListener('change', (event) => {
         const fileList = event.target.files;
@@ -36,19 +35,17 @@
         console.log(fileList);
     });
 
-    module.exports = (
-        function onSubmit(){
-        reader.addEventListener('load', (e)=>{
-            textarea.value = e.target.result
-            data = e.target.result
-        })
-        reader.addEventListener('error', (e)=>{
-            alert(e.target.error.name)
-        })
+    // function onSubmit(){
+    //     reader.addEventListener('load', (e)=>{
+    //         textarea.value = e.target.result
+    //         data = e.target.result
+    //     })
+    //     reader.addEventListener('error', (e)=>{
+    //         alert(e.target.error.name)
+    //     })
 
-        if(file){
-            reader.readAsText(file)
-        }
-        }
-    )
+    //     if(file){
+    //         reader.readAsText(file)
+    //     }
+    // }
 </script>
