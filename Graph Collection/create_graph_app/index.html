@@ -1,0 +1,52 @@
+<!-- index.html creates the layout of the site -->
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" href="./style.css" type="text/css">
+</head>
+
+<body class="center">
+    <!-- This is where the title and instructions will be displayed -->
+    <div id="div">
+        <h1>SAGE3 Graph Generator Test</h1>
+        <br>
+        <div id="div">
+            <p id="p">Select a csv file and press submit</p>
+            <br>
+            <div id="div">
+                <input id ="file_selector" type="file" accept=".txt">
+                <button id="submit_button" onclick="onSubmit()">Submit</button>
+            </div>
+        </div>
+    </div>
+</body>
+<body>
+    <textarea cols="100" rows="25" placeholder="text will appear here"></textarea> 
+</body>
+
+<script>
+    var file
+    const fileSelector = document.getElementById('file_selector')
+    const reader = new FileReader()
+    const textarea = document.querySelector('textarea')
+
+    fileSelector.addEventListener('change', (event) => {
+        const fileList = event.target.files;
+        file = new Blob(fileList, {type: 'text/plain'})
+        console.log(fileList);
+    });
+
+    function onSubmit(){
+        reader.addEventListener('load', (e)=>{
+            textarea.value = e.target.result
+            data = e.target.result
+        })
+        reader.addEventListener('error', (e)=>{
+            alert(e.target.error.name)
+        })
+
+        if(file){
+            reader.readAsText(file)
+        }
+    }
+</script>
