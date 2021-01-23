@@ -15,6 +15,8 @@ The purpose of this project is to formulate a creative way to handle data sheets
     I want to use Node.js because it is hard to communicate with python using React.js (I’m honestly not too sure of the specifics, but when I tried to import spawn, it didn’t work. Need to do further research on that).
 
 ## Diagram
+![UML Diagram](images/SAGE_3_Graph_Generator_Use_Case_UML_Diagram.png)
+
 * ## Select File From Computer
     In order for the conversion process to begin, the user must first need to select a file that they want to see a graphical representation of. For now, the file selector in javascript will only be accepting .txt files (because csv can be represented by .txt files). The user needs to select this from the user’s computer, which will then be uploaded into the site.
 * ## Submit File for Graph Conversion
