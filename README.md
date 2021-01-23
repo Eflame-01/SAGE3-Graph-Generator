@@ -5,7 +5,7 @@ The purpose of this project is to formulate a creative way to handle data sheets
 
 ## Requirements
 * Project must be interactive (create a UI/front end)
-* Project must be able to generate different types of graphs (React-window, React-table, Antd, etc)
+* Project must be able to generate different types of graphs (Bar Graph, Pie Chart, Line Graph, etc)
 * Project must be able to determine what graph to generate based off the data set (algorithmic process, possibly utilize machine learning techniques)
 
 ## Resources
