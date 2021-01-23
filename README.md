@@ -1,13 +1,13 @@
 # SAGE 3 Graph Generator Project
 
 ## Table of Contents
-1. Author(#Author)
-1. Purpose (#Purpose)
-1. Requirements (#Requirements)
-1. Resources (#Resources)
-1. Diagram (#Diagram)
+1. [Author(s)](#author(s))
+1. [Purpose](#purpose)
+1. [Requirements](#requirements)
+1. [Resources](#rsources)
+1. [Diagram](#dagram)
 
-## Author
+## Author(s)
 Eseroghene Omene
 
 ## Purpose
