@@ -4,8 +4,6 @@
     <head>
         <title>SAGE3 Graph Generator Project</title>
         <link rel="stylesheet" href="./style.css" type="text/css">
-        <script src="graph.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </head>
     
     <body class="center">
@@ -20,13 +18,11 @@
                     <form method="POST" action="/">
                         <input id ="file_selector" type="file" accept=".txt" name="file">
                         <button id="submit_button" onclick="onSubmit()">Submit</button>
-                        <textarea cols="100" rows="25" placeholder="text will appear here"></textarea> 
+                        <textarea cols="100" rows="25" placeholder="text will appear here" name="data"></textarea> 
                     </form>
                 </div>
             </div>
         </div>
-    </body>
-    <body>
     </body>
     
     <script>
@@ -39,9 +35,11 @@
             const fileList = event.target.files;
             file = new Blob(fileList, {type: 'text/plain'})
             console.log(fileList);
+            updateTextArea();
         });
 
-        function onSubmit(){
+        function updateTextArea(){
+            textarea.value = "";
             reader.addEventListener('load', (e)=>{
                 textarea.value = e.target.result
                 data = e.target.result
@@ -53,6 +51,10 @@
             if(file){
                 reader.readAsText(file)
             }
+        }
+        
+        function onSubmit(){
+    
         }
     </script>
 </html>

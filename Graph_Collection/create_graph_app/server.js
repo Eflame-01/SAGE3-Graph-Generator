@@ -50,7 +50,7 @@ var writeFile = function(file) {
 app.post('/', urlencodedParser, function(req, res) {
   console.log(req.body);
   res.sendStatus(200);
-  var file = req.body.file;
+  var file = req.body.data;
 
   //if we get here, then we can create the file
   writeFile(file);
