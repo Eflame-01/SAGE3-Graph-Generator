@@ -17,14 +17,16 @@
                 <p id="p">Select a csv file and press submit</p>
                 <br>
                 <div id="file_selector_div">
-                    <input id ="file_selector" type="file" accept=".txt">
-                    <button id="submit_button" onclick="onSubmit()">Submit</button>
+                    <form method="POST" action="/">
+                        <input id ="file_selector" type="file" accept=".txt" name="file">
+                        <button id="submit_button" onclick="onSubmit()">Submit</button>
+                        <textarea cols="100" rows="25" placeholder="text will appear here"></textarea> 
+                    </form>
                 </div>
             </div>
         </div>
     </body>
     <body>
-        <textarea cols="100" rows="25" placeholder="text will appear here"></textarea> 
     </body>
     
     <script>
