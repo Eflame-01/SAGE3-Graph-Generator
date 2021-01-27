@@ -35,23 +35,25 @@ pythonProcess.stdout.on('data', (data) => {
   //console.log(myjson.Data)
 })
 
-var writeFile = function(file) {
+var writeFile = function(name, file) {
   // write file
-  fs.writeFile("./data/data_information.txt", file, function(err){
+  fs.writeFile("./data/" + name, file, function(err){
     if(err){
       console.log(err.message);
     }
     else{
-      console.log("this is when we write the data and send it to our files.");
+      console.log("We have written " + name + " into our application.");
+      //send the name of the file to python in order for python to retrieve the information
     }
   })
 };
 
-app.post('/', urlencodedParser, function(req, res) {
+app.post('/loading', urlencodedParser, function(req, res) {
   console.log(req.body);
-  res.sendStatus(200);
+  var name = req.body.file;
   var file = req.body.data;
 
-  //if we get here, then we can create the file
-  writeFile(file);
+  //create the file
+  writeFile(name, file);
+  res.sendFile(__dirname + "/loading.html");
 });

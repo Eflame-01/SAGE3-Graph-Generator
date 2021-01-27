@@ -15,10 +15,12 @@
                 <p id="p">Select a csv file and press submit</p>
                 <br>
                 <div id="file_selector_div">
-                    <form method="POST" action="/">
+                    <form id="form" method="POST" action="/loading">
                         <input id ="file_selector" type="file" accept=".txt" name="file">
-                        <button id="submit_button" onclick="onSubmit()">Submit</button>
-                        <textarea cols="100" rows="25" placeholder="text will appear here" name="data"></textarea> 
+                        <button id="submit_button">Submit</button>
+                        <div>
+                            <textarea cols="100" rows="25" placeholder="text will appear here" name="data"></textarea> 
+                        </div>
                     </form>
                 </div>
             </div>
@@ -51,10 +53,6 @@
             if(file){
                 reader.readAsText(file)
             }
-        }
-
-        function onSubmit(){
-    
         }
     </script>
 </html>
