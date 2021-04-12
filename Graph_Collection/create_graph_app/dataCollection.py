@@ -1,6 +1,6 @@
 import decisionTree as dt
 import sys
-from flask import Flask, render_template, request, redirect, Response
+from flask import Flask, render_template, request, redirect, Response, url_for
 import random, json
 
 app = Flask(__name__)
@@ -8,7 +8,7 @@ app = Flask(__name__)
 @app.route('/')
 def output():
 	# serve index template
-	return render_template('index.html', name='Ese')
+	return redirect(url_for('index'))
 
 @app.route("/loading", methods = ['POST'])
 def makeGraph():
@@ -18,7 +18,8 @@ def makeGraph():
     return gc.generateGraph()
 
 if __name__ == "__main__":
-	app.run()
+    app.debug = True
+    app.run()
 
 # GraphCreator is a class that generates the 
 # decision tree and formulates the graph based
