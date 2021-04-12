@@ -1,9 +1,11 @@
 <!-- index.html creates the layout of the site -->
+{{name}}
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <title>SAGE3 Graph Generator Project</title>
         <link rel="stylesheet" href="./style.css" type="text/css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     </head>
     
     <body class="center">
@@ -15,36 +17,42 @@
                 <p id="p">Select a csv file and press submit</p>
                 <br>
                 <div id="file_selector_div">
-                    <form id="form" method="POST" action="/loading">
+                    <!-- <form id="form" method="POST" action="/loading">
                         <input id ="file_selector" type="file" accept=".txt" name="file">
                         <button id="submit_button">Submit</button>
                         <div>
-                            <textarea cols="100" rows="25" placeholder="text will appear here" name="data"></textarea> 
+                            <textarea cols="100" rows="25" placeholder="text will appear here" name="data" readonly="true"></textarea> 
                         </div>
-                    </form>
+                    </form> -->
+                    <input id ="file_selector" type="file" accept=".txt" name="file">
+                    <button id="submit_button" onclick="postFile()">Submit</button>
+                    <div>
+                        <textarea cols="100" rows="25" placeholder="text will appear here" name="data" readonly="true"></textarea> 
+                    </div>
                 </div>
             </div>
         </div>
     </body>
     
-    <script>
+    <script type="text/javascript">
         var file
         const fileSelector = document.getElementById('file_selector')
         const textarea = document.querySelector('textarea')
         const reader = new FileReader()
-    
-        fileSelector.addEventListener('change', (event) => {
-            const fileList = event.target.files;
-            file = new Blob(fileList, {type: 'text/plain'})
-            console.log(fileList);
-            updateTextArea();
-        });
+
+        function postFile(){
+            $.post("loading", file, function(){
+
+            });
+            event.preventDefault();
+        }
 
         function updateTextArea(){
             textarea.value = "";
             reader.addEventListener('load', (e)=>{
                 textarea.value = e.target.result
                 data = e.target.result
+                console.log(e.target.result)
             })
             reader.addEventListener('error', (e)=>{
                 alert(e.target.error.name)
@@ -54,5 +62,11 @@
                 reader.readAsText(file)
             }
         }
+    
+        fileSelector.addEventListener('change', (event) => {
+            const fileList = event.target.files;
+            file = new Blob(fileList, {type: 'text/plain'})
+            updateTextArea();
+        });
     </script>
 </html>

@@ -13,11 +13,7 @@ var fs = require('fs');
 
 //init variables to get the hostname and port
 const hostname = '127.0.0.1';
-const port = 3001;
-
-//init variables needed to interact with python code
-const spawn = require("child_process").spawn;
-const pythonProcess = spawn('python3', ["dataCollection.py"])
+const port = 5000;
 
 //use the app
 app.use(express.static(__dirname));
@@ -26,14 +22,6 @@ app.use(express.static(__dirname));
 var server = http.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
 });
-
-//test code checking interaction with python code works
-pythonProcess.stdout.on('data', (data) => {
-  mystr = data.toString();
-  myjson = JSON.parse(mystr)
-
-  //console.log(myjson.Data)
-})
 
 var writeFile = function(name, file) {
   // write file

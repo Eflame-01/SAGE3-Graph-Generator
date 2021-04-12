@@ -27,8 +27,8 @@ class Node:
 # graph will be needed based off the data set
 class DecisionTree:
     def _init_(self, data, features):
-        self.data = data;
-        self.features = features;
+        self.data = data
+        self.features = features
     
     # method that hardcodes the tree
     def createDecisionTree(self):
